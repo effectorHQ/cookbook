@@ -1,0 +1,41 @@
+[effector]
+name             = "docker-manager"
+version          = "1.0.0"
+type             = "skill"
+description      = "Manage Docker containers, images, networks, and volumes via CLI"
+license          = "MIT"
+emoji            = "🐳"
+tags             = ["docker", "containers", "devops", "infrastructure"]
+authors          = ["effectorHQ Contributors"]
+min-spec-version = "0.2.0"
+
+[effector.categories]
+primary   = "infrastructure"
+secondary = ["devops", "containers"]
+
+[effector.interface]
+input   = "String"            # Natural-language Docker task
+output  = "OperationStatus"   # Success/failure with output log
+context = ["ShellEnvironment"] # Requires Docker daemon access
+
+[effector.permissions]
+network    = false             # Docker daemon is local
+filesystem = ["read"]          # Reads Dockerfiles, compose files
+env-read   = ["DOCKER_HOST", "DOCKER_CONTEXT"]
+subprocess = true              # Runs docker CLI
+
+[effector.errors]
+retry      = { max-attempts = 1, backoff = "none" }
+on-failure = "log"
+
+[runtime.openclaw]
+format      = "skill.md"
+entry       = "SKILL.md"
+min-version = "0.20.0"
+
+[runtime.openclaw.requires]
+bins = ["docker"]
+
+[runtime.openclaw.publish]
+registry = "clawhub"
+tier     = "community"

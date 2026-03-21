@@ -1,0 +1,43 @@
+[effector]
+name             = "jira-triage"
+version          = "1.0.0"
+type             = "skill"
+description      = "Triage and prioritize Jira issues using the REST API"
+license          = "MIT"
+emoji            = "🎯"
+tags             = ["jira", "project-management", "triage", "api"]
+authors          = ["effectorHQ Contributors"]
+min-spec-version = "0.2.0"
+
+[effector.categories]
+primary   = "api"
+secondary = ["project-management"]
+
+[effector.interface]
+input   = "String"         # Natural-language triage request or JQL query
+output  = "JSON"           # Jira issue list or update confirmation
+context = ["GenericAPIKey"] # Requires JIRA_API_TOKEN + JIRA_BASE_URL
+
+[effector.permissions]
+network    = true
+filesystem = []
+env-read   = ["JIRA_API_TOKEN", "JIRA_BASE_URL", "JIRA_USER_EMAIL"]
+env-write  = []
+subprocess = false
+
+[effector.errors]
+retry      = { max-attempts = 2, backoff = "linear" }
+on-failure = "log"
+
+[runtime.openclaw]
+format      = "skill.md"
+entry       = "SKILL.md"
+min-version = "0.20.0"
+
+[runtime.openclaw.requires]
+bins = ["curl", "jq"]
+env  = ["JIRA_API_TOKEN", "JIRA_BASE_URL", "JIRA_USER_EMAIL"]
+
+[runtime.openclaw.publish]
+registry = "clawhub"
+tier     = "community"

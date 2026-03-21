@@ -1,0 +1,43 @@
+[effector]
+name             = "notion-sync"
+version          = "1.0.0"
+type             = "extension"
+description      = "Sync documents and structured data to/from Notion via the REST API"
+license          = "MIT"
+emoji            = "📓"
+tags             = ["notion", "sync", "documents", "api", "knowledge-base"]
+authors          = ["effectorHQ Contributors"]
+min-spec-version = "0.2.0"
+
+[effector.categories]
+primary   = "api"
+secondary = ["documents", "knowledge-management"]
+
+[effector.interface]
+input   = "TextDocument"       # Content to sync (markdown or structured text)
+output  = "OperationStatus"    # Sync result with Notion page URL
+context = ["GenericAPIKey"]    # Requires NOTION_TOKEN + NOTION_DATABASE_ID
+
+[effector.permissions]
+network    = true
+filesystem = ["read"]          # May read local files to sync
+env-read   = ["NOTION_TOKEN", "NOTION_DATABASE_ID"]
+env-write  = []
+subprocess = false
+
+[effector.errors]
+retry      = { max-attempts = 3, backoff = "exponential" }
+on-failure = "log"
+
+[runtime.openclaw]
+format      = "skill.md"
+entry       = "SKILL.md"
+min-version = "0.20.0"
+
+[runtime.openclaw.requires]
+bins = ["curl", "jq"]
+env  = ["NOTION_TOKEN", "NOTION_DATABASE_ID"]
+
+[runtime.openclaw.publish]
+registry = "clawhub"
+tier     = "community"

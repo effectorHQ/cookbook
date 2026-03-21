@@ -1,0 +1,43 @@
+[effector]
+name             = "postgres-query"
+version          = "1.0.0"
+type             = "skill"
+description      = "Execute safe read-only PostgreSQL queries and return structured results"
+license          = "MIT"
+emoji            = "🐘"
+tags             = ["postgres", "sql", "database", "query", "data"]
+authors          = ["effectorHQ Contributors"]
+min-spec-version = "0.2.0"
+
+[effector.categories]
+primary   = "data"
+secondary = ["database", "sql"]
+
+[effector.interface]
+input   = "String"         # Natural-language query or raw SQL (read-only)
+output  = "DataTable"      # Query results as structured table
+context = ["GenericAPIKey"] # Requires DATABASE_URL
+
+[effector.permissions]
+network    = true           # Connects to remote Postgres over TCP
+filesystem = []
+env-read   = ["DATABASE_URL", "PGPASSWORD", "PGUSER", "PGHOST", "PGPORT", "PGDATABASE"]
+env-write  = []
+subprocess = true           # Runs psql CLI
+
+[effector.errors]
+retry      = { max-attempts = 1, backoff = "none" }
+on-failure = "log"
+
+[runtime.openclaw]
+format      = "skill.md"
+entry       = "SKILL.md"
+min-version = "0.20.0"
+
+[runtime.openclaw.requires]
+bins = ["psql"]
+env  = ["DATABASE_URL"]
+
+[runtime.openclaw.publish]
+registry = "clawhub"
+tier     = "community"

@@ -1,0 +1,41 @@
+[effector]
+name             = "git-worktree"
+version          = "1.0.0"
+type             = "skill"
+description      = "Manage git worktrees for parallel branch development without context switching"
+license          = "MIT"
+emoji            = "🌿"
+tags             = ["git", "worktree", "branching", "workflow"]
+authors          = ["effectorHQ Contributors"]
+min-spec-version = "0.2.0"
+
+[effector.categories]
+primary   = "code"
+secondary = ["git", "workflow"]
+
+[effector.interface]
+input   = "String"     # Branch name or worktree task
+output  = "FilePath"   # Path to the new/existing worktree
+context = ["Repository"] # Must be run inside a git repo
+
+[effector.permissions]
+network    = false
+filesystem = ["read", "write"]  # Creates worktree directories
+env-read   = ["HOME", "GIT_DIR"]
+subprocess = true               # Runs git CLI
+
+[effector.errors]
+retry      = { max-attempts = 1, backoff = "none" }
+on-failure = "log"
+
+[runtime.openclaw]
+format      = "skill.md"
+entry       = "SKILL.md"
+min-version = "0.20.0"
+
+[runtime.openclaw.requires]
+bins = ["git"]
+
+[runtime.openclaw.publish]
+registry = "clawhub"
+tier     = "community"

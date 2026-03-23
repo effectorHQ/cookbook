@@ -385,7 +385,7 @@ Before submitting, verify:
 - [ ] Notes section addresses common issues
 - [ ] README.md updated with new skill
 - [ ] No Python/code outside the skill definition
-- [ ] MIT License header in SKILL.md (implicit)
+- [ ] Apache License 2.0 header in SKILL.md (implicit)
 - [ ] No hardcoded credentials or secrets
 
 ## Common Issues
@@ -429,13 +429,13 @@ We follow these principles for all cookbook skills:
 
 1. **Build First**: Real, functional solutions
 2. **Ship Loud**: Polished and production-ready
-3. **Open by Default**: MIT licensed, community-owned
+3. **Open by Default**: Apache 2.0 licensed, community-owned
 4. **No Lock-in**: Portable, not vendor-specific
 5. **Practical**: Solves actual developer problems
 
 ## License
 
-All contributions are MIT licensed. By submitting a PR, you agree to license your skill under MIT.
+All contributions are Apache 2.0 licensed. By submitting a PR, you agree to license your skill under Apache 2.0.
 
 See [LICENSE](./LICENSE) for details.
 

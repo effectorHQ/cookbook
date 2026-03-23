@@ -1,6 +1,6 @@
 # OpenClaw Skills Cookbook
 
-[![Skills](https://img.shields.io/badge/skills-5-E03E3E)](./skills) [![skill-lint](https://img.shields.io/badge/validated%20by-skill--lint-success)](https://github.com/effectorHQ/skill-lint) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](./CONTRIBUTING.md) [![License: Apache 2.0](https://img.shields.io/badge/license-Apache-2.0-blue.svg)](./LICENSE)
+[![Skills](https://img.shields.io/badge/skills-5-E03E3E)](./skills) [![skill-lint](https://img.shields.io/badge/validated%20by-skill--lint-success)](https://github.com/effectorHQ/skill-lint) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](./CONTRIBUTING.md)
 
 A collection of community-contributed OpenClaw skill recipes. Each skill is a ready-to-use workflow component for common tasks: Jira triage, database queries, Docker management, git operations, and more.
 
@@ -207,10 +207,7 @@ We welcome new skills! See [CONTRIBUTING.md](./CONTRIBUTING.md) for:
 
 ## License
 
-
-This project is currently licensed under the Apache 2.0 License 。
-
-Apache License 2.0. See [LICENSE](./LICENSE) for details.
+This project is currently licensed under the [Apache License, Version 2.0](LICENSE.md) 。
 
 All skills in this cookbook are Apache 2.0 licensed and open source.
 

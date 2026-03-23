@@ -437,7 +437,7 @@ We follow these principles for all cookbook skills:
 
 All contributions are Apache 2.0 licensed. By submitting a PR, you agree to license your skill under Apache 2.0.
 
-See [LICENSE](./LICENSE) for details.
+See [LICENSE](./LICENSE.md) for details.
 
 ---
 
